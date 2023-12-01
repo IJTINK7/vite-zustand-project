@@ -8,6 +8,13 @@ type StateType = {
 	deleteTodos: () => void
 }
 
+type CounterStoreType = {
+	count: number,
+	increment: () => void
+	decrement: () => void
+	reset: () => void
+}
+
 export const useStore = create<StateType>()(persist(
 	(set, get) => ({
 		todos: [],
@@ -22,3 +29,10 @@ export const useStore = create<StateType>()(persist(
 		name: "todos-storage",
 		getStorage: () => sessionStorage
 	}))
+
+export const useCounterStore = create<CounterStoreType>()((set) => ({
+	count: 0,
+	increment: () => set((state) => ({ count: state.count + 1 })),
+	decrement: () => set((state) => ({ count: state.count - 1 })),
+	reset: () => set({ count: 0 })
+}));

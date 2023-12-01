@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import {Todolist} from "./Todolist.tsx";
+import {Counter} from "./Counter.tsx";
 
 function App() {
   const [count, setCount] = useState(0)
@@ -13,6 +14,7 @@ function App() {
         </button>
       </div>
       <Todolist/>
+      <Counter/>
     </>
   )
 }
